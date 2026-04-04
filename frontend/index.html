@@ -20,6 +20,11 @@
         </header>
 
         <main>
+            <div class="api-key-section glass" style="margin-bottom: 20px; padding: 20px; text-align: left;">
+                <label for="api-key-input" style="display: block; margin-bottom: 10px; font-weight: 600; color: #e2e8f0;">Header API Key</label>
+                <input type="password" id="api-key-input" placeholder="Enter your API Key here..." autocomplete="off" style="width: 100%; padding: 12px 15px; border-radius: 10px; border: 1px solid var(--glass-border); background: rgba(0, 0, 0, 0.2); color: white; font-family: 'Outfit', sans-serif; outline: none; font-size: 1rem;">
+            </div>
+
             <div id="drop-zone" class="drop-zone glass">
                 <div class="upload-content">
                     <svg class="upload-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
@@ -36,34 +41,55 @@
             </div>
 
             <div id="results" class="results-container hidden">
-                <div class="result-card summary-card glass">
-                    <h3>Summary</h3>
-                    <p id="summary-text"></p>
-                </div>
+                <div class="results-grid">
+                    <!-- Left Column -->
+                    <div class="left-col" style="display: flex; flex-direction: column; gap: 30px;">
+                        <div class="result-card summary-card glass hover-float" style="flex-grow: 1;">
+                            <div class="card-header">
+                                <span class="icon">📝</span>
+                                <h3>Summary</h3>
+                            </div>
+                            <div class="card-body">
+                                <p id="summary-text"></p>
+                            </div>
+                        </div>
 
-                <div class="result-card sentiment-card glass">
-                    <h3>Sentiment</h3>
-                    <div id="sentiment-badge" class="badge"></div>
-                </div>
+                        <div class="result-card sentiment-card glass hover-float">
+                            <div class="card-header">
+                                <span class="icon">🎭</span>
+                                <h3>Sentiment</h3>
+                            </div>
+                            <div class="card-body center-content">
+                                <div id="sentiment-badge" class="badge"></div>
+                            </div>
+                        </div>
+                    </div>
 
-                <div class="result-card entities-card glass">
-                    <h3>Key Entities</h3>
-                    <div class="entity-groups">
-                        <div class="entity-group">
-                            <h4>Names</h4>
-                            <div id="entities-names" class="tags"></div>
-                        </div>
-                        <div class="entity-group">
-                            <h4>Organizations</h4>
-                            <div id="entities-orgs" class="tags"></div>
-                        </div>
-                        <div class="entity-group">
-                            <h4>Dates</h4>
-                            <div id="entities-dates" class="tags"></div>
-                        </div>
-                        <div class="entity-group">
-                            <h4>Amounts</h4>
-                            <div id="entities-amounts" class="tags"></div>
+                    <!-- Right Column -->
+                    <div class="right-col">
+                        <div class="result-card entities-card glass hover-float" style="height: 100%;">
+                            <div class="card-header">
+                                <span class="icon">🔍</span>
+                                <h3>Key Entities</h3>
+                            </div>
+                            <div class="entity-groups" style="display: flex; flex-direction: column; gap: 15px;">
+                                <div class="entity-group inner-glass">
+                                    <h4><span class="icon-small">👤</span> Names</h4>
+                                    <div id="entities-names" class="tags"></div>
+                                </div>
+                                <div class="entity-group inner-glass">
+                                    <h4><span class="icon-small">🏢</span> Organizations</h4>
+                                    <div id="entities-orgs" class="tags"></div>
+                                </div>
+                                <div class="entity-group inner-glass">
+                                    <h4><span class="icon-small">📅</span> Dates</h4>
+                                    <div id="entities-dates" class="tags"></div>
+                                </div>
+                                <div class="entity-group inner-glass">
+                                    <h4><span class="icon-small">💰</span> Amounts</h4>
+                                    <div id="entities-amounts" class="tags"></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

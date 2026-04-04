@@ -4,8 +4,6 @@ const loading = document.getElementById('loading');
 const resultsContainer = document.getElementById('results');
 const errorMessage = document.getElementById('error-message');
 
-const API_KEY = "sk_track2_987654321"; // Hardcoded for local testing
-
 // Drag and drop events
 ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
     dropZone.addEventListener(eventName, preventDefaults, false);
@@ -53,6 +51,13 @@ function handleFiles(files) {
 function processFile(file, extension) {
     hideError();
     hideResults();
+    
+    const apiKeyInput = document.getElementById('api-key-input').value.trim();
+    if (!apiKeyInput) {
+        showError("Please enter the Header API Key first before uploading a file.");
+        return;
+    }
+
     showLoading();
 
     const reader = new FileReader();
@@ -65,7 +70,7 @@ function processFile(file, extension) {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                    "x-api-key": API_KEY
+                    "x-api-key": apiKeyInput
                 },
                 body: JSON.stringify({
                     fileName: file.name,
